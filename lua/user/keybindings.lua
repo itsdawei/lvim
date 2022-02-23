@@ -1,16 +1,5 @@
 local M = {}
 
--- HACK: for some reason, the alt keybindings are not working in my wezterm
-M.set_wezterm_keybindings = function()
-  lvim.keys.insert_mode["å"] = lvim.keys.insert_mode["<A-a>"]
-  lvim.keys.insert_mode["ß"] = lvim.keys.insert_mode["<A-s>"]
-  lvim.keys.insert_mode["´"] = lvim.keys.insert_mode["<A-e>"]
-  lvim.keys.insert_mode["∆"] = lvim.keys.insert_mode["<A-j>"]
-  lvim.keys.insert_mode["˚"] = lvim.keys.insert_mode["<A-k>"]
-  lvim.keys.normal_mode["å"] = lvim.keys.normal_mode["<A-a>"]
-  lvim.keys.normal_mode["≈"] = lvim.keys.normal_mode["<A-x>"]
-end
-
 M.set_terminal_keymaps = function()
   local opts = { noremap = true }
   vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], opts)
@@ -49,17 +38,6 @@ M.set_hop_keymaps = function()
     "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>",
     {}
   )
-end
-
-M.set_lightspeed_keymaps = function()
-  vim.cmd [[
-nmap s <Plug>Lightspeed_s
-nmap S <Plug>Lightspeed_S
-nmap <expr> f reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_f" : "f"
-nmap <expr> F reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_F" : "F"
-nmap <expr> t reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_t" : "t"
-nmap <expr> T reg_recording() . reg_executing() == "" ? "<Plug>Lightspeed_T" : "T"
-  ]]
 end
 
 M.set_hlslens_keymaps = function()
@@ -321,13 +299,6 @@ M.config = function()
     w = { "<cmd>Trouble workspace_diagnostics<cr>", "Diagnosticss" },
   }
   lvim.builtin.which_key.mappings["z"] = { "<cmd>ZenMode<cr>", "Zen" }
-
-  -- My wezterm is weird
-  -- =========================================
-  local user = os.getenv "USER"
-  if user and user == "abz" then
-    M.set_wezterm_keybindings()
-  end
 
   -- Navigate merge conflict markers
   local whk_status, whk = pcall(require, "which-key")

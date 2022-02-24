@@ -2,7 +2,7 @@
 -- =========================================
 lvim.format_on_save = false
 lvim.leader = " "
-lvim.colorscheme = "pablo"
+lvim.colorscheme = "onedarker"
 lvim.debug = false
 vim.lsp.set_log_level "warn"
 lvim.log.level = "warn"
@@ -49,20 +49,15 @@ lvim.builtin.tag_provider = "symbols-outline" -- change this to use different ta
 lvim.builtin.editorconfig = { active = true } -- enable/disable editorconfig
 lvim.builtin.fancy_telescope = { active = true } -- telescope to the moon
 
-local user = os.getenv "USER" and vim.fn.has "win" ~= 1 or os.getenv "USERNAME" == "Abouz"
-if user and user == "abz" then
-  lvim.builtin.nvim_web_devicons = { active = false }
-  lvim.builtin.sell_your_soul_to_devil = true
-  lvim.lsp.document_highlight = false
-  lvim.builtin.csv_support = true
-  lvim.builtin.async_tasks.active = true
-  lvim.builtin.dap.active = true
-  lvim.builtin.sql_integration.active = true
-  vim.g.instant_username = user
-  lvim.builtin.collaborative_editing.active = true
+local user = os.getenv "USER"
+if user and user == "dawei" then
   lvim.builtin.file_browser.active = true
-  require("user.prose").config() -- setup prosemd-lsp for my local use
+  lvim.builtin.neoclip.enable_persistent_history = true
+  lvim.builtin.fancy_diff.active = true
+  lvim.builtin.lastplace.active = true
+  -- require("user.prose").config() -- setup prosemd-lsp for my local use
 end
+
 lvim.lsp.diagnostics.virtual_text = false -- remove this line if you want to see inline errors
 lvim.builtin.latex = {
   view_method = "skim", -- change to zathura if you are on linux

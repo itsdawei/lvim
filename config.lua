@@ -23,9 +23,7 @@ lvim.builtin.fancy_wild_menu = { active = false } -- enable/disable use wilder.n
 lvim.builtin.fancy_rename = { active = true } -- enable/disable custom rename
 lvim.builtin.fancy_diff = { active = false } -- enable/disable fancier git diff
 lvim.builtin.lua_dev = { active = true } -- change this to enable/disable folke/lua_dev
-lvim.builtin.test_runner = { active = true } -- change this to enable/disable vim-test, ultest
 lvim.builtin.cheat = { active = true } -- enable cheat.sh integration
-lvim.builtin.sql_integration = { active = false } -- use sql integration
 lvim.builtin.neoscroll = { active = true } -- smooth scrolling
 lvim.builtin.neoclip = { active = true, enable_persistent_history = false }
 lvim.builtin.nonumber_unfocus = false -- diffrentiate between focused and non focused windows
@@ -64,7 +62,7 @@ lvim.builtin.latex = {
   preview_exec = "/Applications/Skim.app/Contents/SharedSupport/displayline", -- change this to zathura as well
   rtl_support = true, -- if you want to use xelatex, it's a bit slower but works very well for RTL langs
 }
-lvim.builtin.notify.active = true
+lvim.builtin.notify.active = false
 lvim.lsp.automatic_servers_installation = false
 if lvim.builtin.cursorline.active then
   lvim.lsp.document_highlight = false

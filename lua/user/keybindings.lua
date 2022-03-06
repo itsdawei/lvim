@@ -172,9 +172,9 @@ M.config = function()
       [[<cmd>lua os.execute("xdg-open " .. vim.fn.shellescape(vim.fn.expand "<cWORD>")); vim.cmd "redraw!"<cr>]]
   end
   set_bufferline_keymaps()
-  if lvim.builtin.sidebar.active then
-    lvim.keys.normal_mode["E"] = ":SidebarNvimToggle<cr>"
-  end
+  -- if lvim.builtin.sidebar.active then
+  --   lvim.keys.normal_mode["E"] = ":SidebarNvimToggle<cr>"
+  -- end
   lvim.keys.normal_mode["<esc><esc>"] = "<cmd>nohlsearch<cr>"
   lvim.keys.normal_mode["Y"] = "y$"
   lvim.keys.normal_mode["gv"] = "<cmd>vsplit | lua vim.lsp.buf.definition()<cr>"
@@ -190,10 +190,10 @@ M.config = function()
   if lvim.builtin.fancy_dashboard.active then
     lvim.builtin.which_key.mappings[";"] = { "<cmd>Alpha<CR>", "Dashboard" }
   end
-  if lvim.builtin.dap.active then
-    lvim.builtin.which_key.mappings["de"] = { "<cmd>lua require('dapui').eval()<cr>", "Eval" }
-    lvim.builtin.which_key.mappings["dU"] = { "<cmd>lua require('dapui').toggle()<cr>", "Toggle UI" }
-  end
+  -- if lvim.builtin.dap.active then
+  --   lvim.builtin.which_key.mappings["de"] = { "<cmd>lua require('dapui').eval()<cr>", "Eval" }
+  --   lvim.builtin.which_key.mappings["dU"] = { "<cmd>lua require('dapui').toggle()<cr>", "Toggle UI" }
+  -- end
   if lvim.builtin.fancy_diff.active then
     lvim.builtin.which_key.mappings["gd"] = { "<cmd>DiffviewOpen<cr>", "diffview: diff HEAD" }
   end
@@ -267,8 +267,6 @@ M.config = function()
   lvim.builtin.which_key.mappings["N"] = { "<cmd>Telescope file_create<CR>", "Create new file" }
   if lvim.builtin.tag_provider == "symbols-outline" then
     lvim.builtin.which_key.mappings["o"] = { "<cmd>SymbolsOutline<cr>", "Symbol Outline" }
-  elseif lvim.builtin.tag_provider == "vista" then
-    lvim.builtin.which_key.mappings["o"] = { "<cmd>Vista!!<cr>", "Vista" }
   end
   lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
   lvim.builtin.which_key.mappings["R"] = {

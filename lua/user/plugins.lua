@@ -126,16 +126,6 @@ M.config = function()
       event = "BufRead",
     },
     {
-      "rcarriga/nvim-dap-ui",
-      config = function()
-        require("dapui").setup()
-      end,
-      ft = { "python", "rust", "go" },
-      event = "BufReadPost",
-      requires = { "mfussenegger/nvim-dap" },
-      disable = not lvim.builtin.dap.active,
-    },
-    {
       "andymass/vim-matchup",
       event = "BufReadPost",
       config = function()
@@ -189,13 +179,6 @@ M.config = function()
         }
       end,
       disable = not lvim.builtin.persistence.active,
-    },
-    {
-      "andweeb/presence.nvim",
-      config = function()
-        require("user.presence").config()
-      end,
-      disable = not lvim.builtin.presence.active,
     },
     { "mfussenegger/nvim-jdtls", ft = "java" },
     {
@@ -272,17 +255,6 @@ M.config = function()
       disable = not lvim.builtin.fancy_dashboard.active,
     },
     {
-      "gelguy/wilder.nvim",
-      -- event = { "CursorHold", "CmdlineEnter" },
-      rocks = { "luarocks-fetch-gitrec", "pcre2" },
-      requires = { "romgrk/fzy-lua-native" },
-      config = function()
-        vim.cmd(string.format("source %s", "~/.config/lvim/vimscript/wilder.vim"))
-      end,
-      run = ":UpdateRemotePlugins",
-      disable = not lvim.builtin.fancy_wild_menu.active,
-    },
-    {
       "karb94/neoscroll.nvim",
       config = function()
         require("neoscroll").setup {
@@ -291,13 +263,6 @@ M.config = function()
       end,
       event = "BufRead",
       disable = not lvim.builtin.neoscroll.active,
-    },
-    {
-      "github/copilot.vim",
-      config = function()
-        require("user.copilot").config()
-      end,
-      disable = not lvim.builtin.sell_your_soul_to_devil,
     },
     {
       "ThePrimeagen/harpoon",
@@ -328,22 +293,6 @@ M.config = function()
       disable = not lvim.builtin.fancy_diff.active,
     },
     {
-      "chipsenkbeil/distant.nvim",
-      opt = true,
-      run = { "DistantInstall" },
-      cmd = { "DistantLaunch", "DistantRun" },
-      config = function()
-        require("distant").setup {
-          ["*"] = vim.tbl_extend(
-            "force",
-            require("distant.settings").chip_default(),
-            { mode = "ssh" } -- use SSH mode by default
-          ),
-        }
-      end,
-      disable = not lvim.builtin.remote_dev.active,
-    },
-    {
       "nathom/filetype.nvim",
       config = function()
         require("user.filetype").config()
@@ -369,29 +318,6 @@ M.config = function()
     },
     { "mtdl9/vim-log-highlighting", ft = { "text", "log" } },
     {
-      "yamatsum/nvim-cursorline",
-      opt = true,
-      event = "BufWinEnter",
-      disable = not lvim.builtin.cursorline.active,
-    },
-    {
-      "abecodes/tabout.nvim",
-      wants = { "nvim-treesitter" },
-      after = { "nvim-cmp" },
-      config = function()
-        require("user.tabout").config()
-      end,
-      disable = not lvim.builtin.sell_your_soul_to_devil,
-    },
-    {
-      "kevinhwang91/nvim-hlslens",
-      config = function()
-        require("user.hlslens").config()
-      end,
-      event = "BufReadPost",
-      disable = not lvim.builtin.hlslens.active,
-    },
-    {
       "kosayoda/nvim-lightbulb",
       config = function()
         vim.fn.sign_define(
@@ -412,14 +338,6 @@ M.config = function()
       after = "nvim-treesitter",
     },
     {
-      "sidebar-nvim/sidebar.nvim",
-      config = function()
-        require("user.sidebar").config()
-      end,
-      -- event = "BufRead",
-      disable = not lvim.builtin.sidebar.active,
-    },
-    {
       "skywind3000/asynctasks.vim",
       requires = {
         { "skywind3000/asyncrun.vim" },
@@ -433,16 +351,6 @@ M.config = function()
       end,
       event = "BufRead",
       disable = not lvim.builtin.async_tasks.active,
-    },
-    {
-      "scalameta/nvim-metals",
-      requires = { "nvim-lua/plenary.nvim" },
-      disable = not lvim.builtin.metals.active,
-    },
-    {
-      "jbyuki/instant.nvim",
-      event = "BufRead",
-      disable = not lvim.builtin.collaborative_editing.active,
     },
     {
       "nvim-telescope/telescope-file-browser.nvim",

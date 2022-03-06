@@ -22,12 +22,16 @@ local conds = require "luasnip.extras.expand_conditions"
 ls.snippets = {
   tex = {
     s("lp", {
-      t({"\\begin{align*}",
-        "\t\\text{minimize} \\quad c^\\intercal x & \\\\",
-        "\t\\text{subject to} \\quad Ax &= b \\\\",
-        "\tx &\\ge 0",
-        "\\end{align*}",
+      t({
+        "\\begin{equation}",
+        "\t\\label{lp:}",
+        "\t\\begin{array}{llll}",
+        "\t\t\\text{minimize}  & c^\\intercal x & \\\\",
+        "\t\t\\text{subject to}& Ax \\le b & \\\\",
+        "\t\t& x \\ge 0 &",
+        "\t\\end{array}{llll}",
+        "\\end{equation}",
       })
-    }),
+    })
   },
 }

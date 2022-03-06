@@ -218,14 +218,6 @@ M.config = function()
       requires = "nvim-treesitter/nvim-treesitter",
     },
     {
-      "vim-test/vim-test",
-      cmd = { "TestNearest", "TestFile", "TestSuite", "TestLast", "TestVisit" },
-      config = function()
-        require("user.vim_test").config()
-      end,
-      disable = not lvim.builtin.test_runner.active,
-    },
-    {
       "jose-elias-alvarez/nvim-lsp-ts-utils",
       ft = {
         "javascript",
@@ -242,16 +234,6 @@ M.config = function()
     {
       "lervag/vimtex",
       ft = "tex",
-    },
-    {
-      "rcarriga/vim-ultest",
-      cmd = { "Ultest", "UltestSummary", "UltestNearest" },
-      wants = "vim-test",
-      requires = { "vim-test/vim-test" },
-      run = ":UpdateRemotePlugins",
-      opt = true,
-      event = { "BufEnter *_test.*,*_spec.*" },
-      disable = not lvim.builtin.test_runner.active,
     },
     {
       "akinsho/flutter-tools.nvim",
@@ -299,10 +281,6 @@ M.config = function()
       end,
       run = ":UpdateRemotePlugins",
       disable = not lvim.builtin.fancy_wild_menu.active,
-    },
-    {
-      "kristijanhusak/vim-dadbod-completion",
-      disable = not lvim.builtin.sql_integration.active,
     },
     {
       "kristijanhusak/vim-dadbod-ui",
@@ -498,14 +476,6 @@ M.config = function()
       "michaelb/sniprun",
       run = "bash ./install.sh",
       disable = not lvim.builtin.sniprun.active,
-    },
-    {
-      "liuchengxu/vista.vim",
-      setup = function()
-        require("user.vista").config()
-      end,
-      event = "BufReadPost",
-      disable = lvim.builtin.tag_provider ~= "vista",
     },
     {
       "p00f/clangd_extensions.nvim",

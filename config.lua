@@ -23,9 +23,7 @@ lvim.builtin.fancy_wild_menu = { active = false } -- enable/disable use wilder.n
 lvim.builtin.fancy_rename = { active = true } -- enable/disable custom rename
 lvim.builtin.fancy_diff = { active = false } -- enable/disable fancier git diff
 lvim.builtin.lua_dev = { active = true } -- change this to enable/disable folke/lua_dev
-lvim.builtin.test_runner = { active = true } -- change this to enable/disable vim-test, ultest
 lvim.builtin.cheat = { active = true } -- enable cheat.sh integration
-lvim.builtin.sql_integration = { active = false } -- use sql integration
 lvim.builtin.neoscroll = { active = true } -- smooth scrolling
 lvim.builtin.neoclip = { active = true, enable_persistent_history = false }
 lvim.builtin.nonumber_unfocus = false -- diffrentiate between focused and non focused windows

@@ -1,6 +1,6 @@
 {
-  "linear": {
-    "prefix": "linear",
+  "linear program": {
+    "prefix": "lp",
     "body": [
       "\\begin{equation}",
       "\t\\label{lp:}",

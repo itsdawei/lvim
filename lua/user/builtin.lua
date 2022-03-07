@@ -5,7 +5,6 @@ M.config = function()
   -- Snippets
   -- =========================================
   require("luasnip/loaders/from_vscode").load { paths = { "~/.config/lvim/snippets" } }
-  require("user.snippets")
 
   -- Autopairs
   -- =========================================

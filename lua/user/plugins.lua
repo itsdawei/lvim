@@ -7,14 +7,11 @@ M.config = function()
   end
   lvim.plugins = {
     {
-      "folke/tokyonight.nvim",
+      "abzcoding/tokyonight.nvim",
+      branch = "feat/local",
       config = function()
         require("user.theme").tokyonight()
         vim.cmd [[colorscheme tokyonight]]
-      end,
-      cond = function()
-        local _time = os.date "*t"
-        return _time.hour >= 9 and _time.hour < 17
       end,
     },
     {
@@ -61,13 +58,6 @@ M.config = function()
         }
       end,
       cmd = "Trouble",
-    },
-    {
-      "ggandor/lightspeed.nvim",
-      config = function()
-        require("user.lightspeed").config()
-      end,
-      disable = lvim.builtin.motion_provider ~= "lightspeed",
     },
     {
       "phaazon/hop.nvim",
@@ -126,6 +116,16 @@ M.config = function()
       event = "BufRead",
     },
     {
+      "rcarriga/nvim-dap-ui",
+      config = function()
+        require("dapui").setup()
+      end,
+      ft = { "python", "rust", "go" },
+      event = "BufReadPost",
+      requires = { "mfussenegger/nvim-dap" },
+      disable = not lvim.builtin.dap.active,
+    },
+    {
       "andymass/vim-matchup",
       event = "BufReadPost",
       config = function()
@@ -168,7 +168,7 @@ M.config = function()
       end,
       event = "BufRead",
     },
-    {
+     {
       "folke/persistence.nvim",
       event = "BufReadPre",
       module = "persistence",
@@ -248,21 +248,19 @@ M.config = function()
       disable = not lvim.builtin.neoclip.active,
     },
     {
-      "goolord/alpha-nvim",
+      "declancm/cinnamon.nvim",
       config = function()
-        require("user.dashboard").config()
-      end,
-      disable = not lvim.builtin.fancy_dashboard.active,
-    },
-    {
-      "karb94/neoscroll.nvim",
-      config = function()
-        require("neoscroll").setup {
-          easing_function = "quadratic",
+        require("cinnamon").setup {
+          default_keymaps = true,
+          extra_keymaps = true,
+          extended_keymaps = false,
+          centered = true,
+          disable = false,
+          scroll_limit = 150,
         }
       end,
       event = "BufRead",
-      disable = not lvim.builtin.neoscroll.active,
+      disable = lvim.builtin.smooth_scroll ~= "cinnamon",
     },
     {
       "ThePrimeagen/harpoon",
@@ -293,7 +291,8 @@ M.config = function()
       disable = not lvim.builtin.fancy_diff.active,
     },
     {
-      "nathom/filetype.nvim",
+      "abzcoding/filetype.nvim",
+      branch = "fix/qf-syntax",
       config = function()
         require("user.filetype").config()
       end,
@@ -308,15 +307,24 @@ M.config = function()
     {
       "nvim-telescope/telescope-live-grep-raw.nvim",
     },
-    {
-      "abzcoding/renamer.nvim",
-      branch = "develop",
-      config = function()
-        require("user.renamer").config()
-      end,
-      disable = not lvim.builtin.fancy_rename.active,
-    },
     { "mtdl9/vim-log-highlighting", ft = { "text", "log" } },
+    {
+      "abecodes/tabout.nvim",
+      wants = { "nvim-treesitter" },
+      after = { "nvim-cmp" },
+      config = function()
+        require("user.tabout").config()
+      end,
+      disable = not lvim.builtin.sell_your_soul_to_devil,
+    },
+    {
+      "kevinhwang91/nvim-hlslens",
+      config = function()
+        require("user.hlslens").config()
+      end,
+      event = "BufReadPost",
+      disable = not lvim.builtin.hlslens.active,
+    },
     {
       "kosayoda/nvim-lightbulb",
       config = function()
@@ -353,6 +361,11 @@ M.config = function()
       disable = not lvim.builtin.async_tasks.active,
     },
     {
+      "scalameta/nvim-metals",
+      requires = { "nvim-lua/plenary.nvim" },
+      disable = not lvim.builtin.metals.active,
+    },
+    {
       "nvim-telescope/telescope-file-browser.nvim",
       disable = not lvim.builtin.file_browser.active,
     },
@@ -386,6 +399,30 @@ M.config = function()
       config = function()
         require("user.crates").config()
       end,
+    },
+    {
+      "hrsh7th/cmp-cmdline",
+      disable = not lvim.builtin.fancy_wild_menu.active,
+    },
+    {
+      "gfeiyou/command-center.nvim",
+      config = function()
+        require("user.cc").config()
+      end,
+      requires = "nvim-telescope/telescope.nvim",
+    },
+    {
+      "stevearc/dressing.nvim",
+      config = function()
+        require("user.dress").config()
+      end,
+      disable = not lvim.builtin.dressing.active,
+      event = "BufWinEnter",
+    },
+    {
+      "kdheepak/cmp-latex-symbols",
+      requires = "hrsh7th/nvim-cmp",
+      ft = "tex",
     },
   }
 end

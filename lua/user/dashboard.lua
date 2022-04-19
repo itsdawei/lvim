@@ -1,11 +1,6 @@
 local M = {}
 
 M.config = function()
-  local present, alpha = pcall(require, "alpha")
-  if not present then
-    return
-  end
-
   local kind = require "user.lsp_kind"
 
   local header = {
@@ -94,7 +89,7 @@ M.config = function()
   local buttons = {
     type = "group",
     val = {
-      button("f", " " .. kind.cmp_kind.Folder .. " Explore", ":Telescope find_files<CR>"),
+      button("f", " " .. kind.cmp_kind.Folder .. " Explore", ":Telescope find_files preview={timeout=1000}<CR>"),
       button("e", " " .. kind.cmp_kind.File .. " New file", ":ene <BAR> startinsert <CR>"),
       button("s", " " .. kind.icons.magic .. " Restore", ":lua require('persistence').load()<cr>"),
       button(
@@ -104,6 +99,7 @@ M.config = function()
       ),
       button("r", " " .. kind.icons.clock .. " Recents", ":Telescope oldfiles<CR>"),
       button("c", " " .. kind.icons.settings .. " Config", ":e ~/.config/lvim/config.lua<CR>"),
+      button("q", " " .. kind.icons.exit .. " Quit", ":q<CR>"),
     },
     opts = {
       spacing = 1,
@@ -136,7 +132,7 @@ M.config = function()
       margin = 5,
     },
   }
-  alpha.setup(opts)
+  return opts
 end
 
 return M

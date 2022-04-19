@@ -14,13 +14,15 @@ M.tokyonight = function()
   }
   vim.g.tokyonight_cterm_colors = false
   vim.g.tokyonight_terminal_colors = true
-  vim.g.tokyonight_italic_comments = true
+  vim.g.tokyonight_italic_comments = false
   vim.g.tokyonight_italic_keywords = true
   vim.g.tokyonight_italic_functions = false
   vim.g.tokyonight_italic_variables = false
   vim.g.tokyonight_transparent = lvim.transparent_window
   vim.g.tokyonight_hide_inactive_statusline = true
   vim.g.tokyonight_dark_sidebar = true
+  vim.g.tokyonight_dim_inactive = true
+  vim.g.tokyonight_global_status = true
   vim.g.tokyonight_dark_float = true
   vim.g.tokyonight_colors = { git = { change = "#6183bb", add = "#449dab", delete = "#f7768e", conflict = "#bb7a61" } }
   local _time = os.date "*t"
@@ -110,21 +112,22 @@ M.telescope_theme = function()
     vim.cmd("hi " .. group .. " guifg=" .. fg .. " guibg=" .. bg)
   end
 
-  if lvim.builtin.fancy_telescope.active then
-    local colors = M.hi_colors()
-    set_fg_bg("TelescopeBorder", colors.bg_alt, colors.bg)
-    set_fg_bg("TelescopePromptBorder", colors.bg, colors.bg)
-    set_fg_bg("TelescopePromptNormal", colors.fg, colors.bg_alt)
-    set_fg_bg("TelescopePromptPrefix", colors.red, colors.bg)
-    set_bg("TelescopeNormal", colors.bg)
-    set_fg_bg("TelescopePreviewTitle", colors.bg, colors.green)
-    set_fg_bg("LvimInfoHeader", colors.bg, colors.green)
-    set_fg_bg("LvimInfoIdentifier", colors.red, colors.bg_alt)
-    set_fg_bg("TelescopePromptTitle", colors.bg, colors.red)
-    set_fg_bg("TelescopeResultsTitle", colors.bg, colors.bg)
-    set_fg_bg("TelescopeResultsBorder", colors.bg, colors.bg)
-    set_bg("TelescopeSelection", colors.bg_alt)
-  end
+  local colors = M.hi_colors()
+  -- set_fg_bg("WinSeparator", colors.bg, "None")
+  set_fg_bg("NormalFloat", colors.fg, colors.bg)
+  set_fg_bg("FloatBorder", colors.fg, colors.bg)
+  set_fg_bg("TelescopeBorder", colors.bg_alt, colors.bg)
+  set_fg_bg("TelescopePromptBorder", colors.bg, colors.bg)
+  set_fg_bg("TelescopePromptNormal", colors.fg, colors.bg_alt)
+  set_fg_bg("TelescopePromptPrefix", colors.red, colors.bg)
+  set_bg("TelescopeNormal", colors.bg)
+  set_fg_bg("TelescopePreviewTitle", colors.bg, colors.green)
+  set_fg_bg("LvimInfoHeader", colors.bg, colors.green)
+  set_fg_bg("LvimInfoIdentifier", colors.red, colors.bg_alt)
+  set_fg_bg("TelescopePromptTitle", colors.bg, colors.red)
+  set_fg_bg("TelescopeResultsTitle", colors.bg, colors.bg)
+  set_fg_bg("TelescopeResultsBorder", colors.bg, colors.bg)
+  set_bg("TelescopeSelection", colors.bg_alt)
 end
 
 return M

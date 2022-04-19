@@ -1,6 +1,6 @@
 -- Neovim
 -- =========================================
-lvim.format_on_save = true
+lvim.format_on_save = false
 lvim.leader = " "
 lvim.colorscheme = "onedarker"
 lvim.debug = false
@@ -15,30 +15,44 @@ lvim.builtin.tabnine = { active = true } -- change to false if you don't like ta
 lvim.builtin.persistence = { active = true } -- change to false if you don't want persistence
 lvim.builtin.orgmode = { active = false } -- change to true if you want orgmode.nvim
 lvim.builtin.fancy_statusline = { active = true } -- enable/disable fancy statusline
+lvim.builtin.fancy_wild_menu = { active = false } -- enable/disable cmp-cmdline
 lvim.builtin.fancy_dashboard = { active = true } -- enable/disable fancy dashboard
 lvim.builtin.fancy_rename = { active = true } -- enable/disable custom rename
 lvim.builtin.fancy_diff = { active = false } -- enable/disable fancier git diff
 lvim.builtin.lua_dev = { active = true } -- change this to enable/disable folke/lua_dev
 lvim.builtin.cheat = { active = true } -- enable cheat.sh integration
-lvim.builtin.neoscroll = { active = true } -- smooth scrolling
+lvim.builtin.smooth_scroll = "cinnamon" -- for smoth scrolling, can be "cinnamon", "neoscroll" or ""
 lvim.builtin.neoclip = { active = true, enable_persistent_history = false }
 lvim.builtin.nonumber_unfocus = true -- diffrentiate between focused and non focused windows
 lvim.builtin.harpoon = { active = true } -- use the harpoon plugin
 lvim.builtin.motion_provider = "hop" -- change this to use different motion providers ( hop or lightspeed )
-lvim.builtin.csv_support = true -- enable/disable csv support
+lvim.builtin.hlslens = { active = false } -- enable/disable hlslens
+lvim.builtin.csv_support = false -- enable/disable csv support
 lvim.builtin.async_tasks = { active = false } -- enable/disable async tasks
 lvim.builtin.file_browser = { active = false } -- enable/disable telescope file browser
 lvim.builtin.sniprun = { active = false } -- enable/disable sniprun
 lvim.builtin.tag_provider = "symbols-outline" -- change this to use different tag providers ( symbols-outline or vista )
 lvim.builtin.editorconfig = { active = true } -- enable/disable editorconfig
 lvim.builtin.fancy_telescope = { active = true } -- telescope to the moon
+lvim.builtin.metals = {
+  active = false, -- enable/disable nvim-metals for scala development
+  fallbackScalaVersion = "2.13.7",
+  serverVersion = "0.10.9+271-a8bb69f6-SNAPSHOT",
+}
+lvim.builtin.global_statusline = false -- set true to use global statusline
+lvim.builtin.dressing = { active = false } -- enable to override vim.ui.input and vim.ui.select with telescope
 
 local user = os.getenv "USER"
 if user and user == "dawei" then
   lvim.builtin.file_browser.active = true
   lvim.builtin.neoclip.enable_persistent_history = true
+  lvim.builtin.csv_support = true
   lvim.builtin.fancy_diff.active = true
   lvim.builtin.lastplace.active = true
+  lvim.builtin.global_statusline = true
+  lvim.builtin.dressing.active = true
+  lvim.builtin.fancy_wild_menu.active = true
+  lvim.builtin.hlslens.active = true
   -- require("user.prose").config() -- setup prosemd-lsp for my local use
 end
 
@@ -50,7 +64,7 @@ lvim.builtin.latex = {
 }
 lvim.builtin.notify.active = false
 lvim.lsp.automatic_servers_installation = false
-lvim.lsp.code_lens_refresh = true
+lvim.lsp.code_lens_refresh = false
 require("user.builtin").config()
 
 -- StatusLine
@@ -67,18 +81,19 @@ end
 
 -- Language Specific
 -- =========================================
-vim.list_extend(lvim.lsp.override, {
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {
   "clangd",
   "dockerls",
+  "gopls",
+  "jdtls",
   "pyright",
+  "r_language_server",
+  "rust_analyzer",
   "sumneko_lua",
+  "taplo",
   "texlab",
   "tsserver",
   "yamlls",
-  -- "gopls",
-  -- "r_language_server",
-  -- "rust_analyzer",
-  -- "taplo",
 })
 require("user.null_ls").config()
 

@@ -72,10 +72,10 @@ M.config = function()
         name = "config",
         matcher = function(buf)
           return buf.filename:match "go.mod"
-              or buf.filename:match "go.sum"
-              or buf.filename:match "Cargo.toml"
-              or buf.filename:match "manage.py"
-              or buf.filename:match "Makefile"
+            or buf.filename:match "go.sum"
+            or buf.filename:match "Cargo.toml"
+            or buf.filename:match "manage.py"
+            or buf.filename:match "Makefile"
         end,
       },
     },
@@ -195,10 +195,7 @@ M.config = function()
 
   -- LSP
   -- =========================================
-  lvim.lsp.buffer_mappings.normal_mode["ga"] = {
-    "<cmd>lua require('user.telescope').code_actions()<CR>",
-    "Code Action",
-  }
+  lvim.lsp.buffer_mappings.normal_mode["ga"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" }
   lvim.lsp.buffer_mappings.normal_mode["gI"] = {
     "<cmd>lua require('user.telescope').lsp_implementations()<CR>",
     "Goto Implementation",
@@ -384,6 +381,7 @@ M.config = function()
   -- Telescope
   -- =========================================
   -- lvim.builtin.telescope.defaults.path_display = { "smart", "absolute", "truncate" }
+  lvim.builtin.telescope.defaults.dynamic_preview_title = true
   lvim.builtin.telescope.defaults.path_display = { shorten = 10 }
   lvim.builtin.telescope.defaults.prompt_prefix = "  "
   lvim.builtin.telescope.defaults.borderchars = {

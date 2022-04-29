@@ -190,6 +190,7 @@ M.config = function()
     set_harpoon_keymaps()
   end
   lvim.keys.visual_mode["p"] = [["_dP]]
+  lvim.keys.visual_mode["ga"] = "<esc><Cmd>lua vim.lsp.buf.range_code_action()<CR>"
   lvim.keys.visual_mode["<leader>st"] = "<Cmd>lua require('user.telescope').grep_string_visual()<CR>"
 
   -- WhichKey keybindings

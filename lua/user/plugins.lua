@@ -168,7 +168,7 @@ M.config = function()
       end,
       event = "BufRead",
     },
-     {
+    {
       "folke/persistence.nvim",
       event = "BufReadPre",
       module = "persistence",
@@ -291,8 +291,7 @@ M.config = function()
       disable = not lvim.builtin.fancy_diff.active,
     },
     {
-      "abzcoding/filetype.nvim",
-      branch = "fix/qf-syntax",
+      "nathom/filetype.nvim",
       config = function()
         require("user.filetype").config()
       end,
@@ -423,6 +422,14 @@ M.config = function()
       "kdheepak/cmp-latex-symbols",
       requires = "hrsh7th/nvim-cmp",
       ft = "tex",
+    },
+    {
+      "ThePrimeagen/refactoring.nvim",
+      ft = { "typescript", "javascript", "lua", "c", "cpp", "go", "python", "java", "php" },
+      event = "BufRead",
+      config = function()
+        require("refactoring").setup {}
+      end,
     },
   }
 end

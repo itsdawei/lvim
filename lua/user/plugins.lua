@@ -300,7 +300,7 @@ M.config = function()
       disable = lvim.builtin.nvim_web_devicons == nil,
     },
     {
-      "nvim-telescope/telescope-live-grep-raw.nvim",
+      "nvim-telescope/telescope-live-grep-args.nvim",
     },
     { "mtdl9/vim-log-highlighting", ft = { "text", "log" } },
     {

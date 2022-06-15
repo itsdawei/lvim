@@ -34,7 +34,7 @@ lvim.builtin.sniprun = { active = false } -- enable/disable sniprun
 lvim.builtin.tag_provider = "symbols-outline" -- change this to use different tag providers ( symbols-outline or vista )
 lvim.builtin.editorconfig = { active = true } -- enable/disable editorconfig
 lvim.builtin.fancy_telescope = { active = true } -- telescope to the moon
-lvim.builtin.winbar_provider = "filename" -- can be "filename" or "treesitter" or ""
+lvim.builtin.winbar_provider = "treesitter" -- can be "filename" or "treesitter" or ""
 lvim.builtin.metals = {
   active = false, -- enable/disable nvim-metals for scala development
   fallbackScalaVersion = "2.13.7",
@@ -53,6 +53,8 @@ lvim.builtin.latex = {
 lvim.builtin.notify.active = true
 lvim.lsp.automatic_servers_installation = false
 lvim.lsp.code_lens_refresh = true
+-- vim.opt.cmdheight = 0
+
 require("user.builtin").config()
 
 -- StatusLine

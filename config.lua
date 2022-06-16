@@ -44,6 +44,7 @@ lvim.builtin.metals = {
 lvim.builtin.global_statusline = true -- set true to use global statusline
 lvim.builtin.dressing = { active = true } -- enable to override vim.ui.input and vim.ui.select with telescope
 lvim.builtin.refactoring = { active = true }
+lvim.builtin.tmux_lualine = false -- use vim-tpipeline to integrate lualine and tmux
 
 lvim.lsp.diagnostics.virtual_text = false -- remove this line if you want to see inline errors
 lvim.builtin.latex = {

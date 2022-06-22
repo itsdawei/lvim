@@ -2,7 +2,7 @@
 -- =========================================
 lvim.format_on_save = false
 lvim.leader = " "
-lvim.colorscheme = "onedarker"
+lvim.colorscheme = "gruvbox"
 lvim.debug = false
 vim.lsp.set_log_level "warn"
 lvim.log.level = "warn"

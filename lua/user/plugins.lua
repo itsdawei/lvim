@@ -7,12 +7,14 @@ M.config = function()
   end
   lvim.plugins = {
     {
+      "gruvbox-community/gruvbox",
+      config = function()
+        vim.cmd [[colorscheme gruvbox]]
+      end,
+    },
+    {
       "abzcoding/tokyonight.nvim",
       branch = "feat/local",
-      config = function()
-        require("user.theme").tokyonight()
-        vim.cmd [[colorscheme tokyonight]]
-      end,
     },
     {
       "ray-x/lsp_signature.nvim",
